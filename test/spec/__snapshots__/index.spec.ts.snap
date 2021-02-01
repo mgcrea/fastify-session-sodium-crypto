@@ -2,7 +2,6 @@
 
 exports[`module should export a stable API 1`] = `
 Object {
-  "CRYPTO_SPLIT_CHAR": ".",
   "SODIUM_AUTH": SodiumAuth {
     "encoding": "base64",
     "protocol": "/sodium_auth",
@@ -15,9 +14,5 @@ Object {
   },
   "SodiumAuth": [Function],
   "SodiumSecretbox": [Function],
-  "buildKeyFromSecretAndSalt": [Function],
-  "generateRandomKey": [Function],
-  "generateSalt": [Function],
-  "sanitizeSecretKeys": [Function],
 }
 `;
