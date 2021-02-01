@@ -23,7 +23,11 @@ npm install fastify-cookie @mgcrea/fastify-session-sodium-crypto --save
 yarn add fastify-cookie @mgcrea/fastify-session-sodium-crypto
 ```
 
-### Stateful session with an external redis store
+### Stateful signed session with an external store
+
+Leveraging an external store, the session id (generated with [nanoid](https://github.com/ai/nanoid)) is signed using a
+secret-key with
+[libsodium's crytpo_auth](https://libsodium.gitbook.io/doc/secret-key_cryptography/secret-key_authentication)
 
 ```ts
 import createFastify, { FastifyInstance, FastifyServerOptions } from 'fastify';
@@ -50,7 +54,7 @@ export const buildFastify = (options?: FastifyServerOptions): FastifyInstance =>
 };
 ```
 
-### Stateless session
+### Stateless encrypted session without a store
 
 No external store required, the entire session data is encrypted using a secret-key with
 [libsodium's crypto_secretbox_easy](https://libsodium.gitbook.io/doc/secret-key_cryptography/secretbox)
