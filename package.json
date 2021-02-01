@@ -1,6 +1,6 @@
 {
   "name": "fastify-session-sodium-crypto",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Fast sodium-based crypto for fastify-session",
   "main": "lib/index.js",
   "bin": {
@@ -18,7 +18,7 @@
   "author": "Olivier Louvignes <olivier@mgcrea.io>",
   "license": "MIT",
   "devDependencies": {
-    "@mgcrea/fastify-session": "^0.11.2",
+    "@mgcrea/fastify-session": "^0.12.0",
     "@tsconfig/node10": "^1.0.7",
     "@types/sodium-native": "^2.3.5",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
