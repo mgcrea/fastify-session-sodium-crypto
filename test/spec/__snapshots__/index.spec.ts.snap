@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`module should export a stable API 1`] = `
+Object {
+  "CRYPTO_SPLIT_CHAR": ".",
+  "SODIUM_AUTH": SodiumAuth {
+    "encoding": "base64",
+    "protocol": "/sodium_auth",
+    "stateless": false,
+  },
+  "SODIUM_SECRETBOX": SodiumSecretbox {
+    "encoding": "base64",
+    "protocol": "/sodium_secretbox",
+    "stateless": true,
+  },
+  "SodiumAuth": [Function],
+  "SodiumSecretbox": [Function],
+  "buildKeyFromSecretAndSalt": [Function],
+  "generateRandomKey": [Function],
+  "generateSalt": [Function],
+  "sanitizeSecretKeys": [Function],
+}
+`;
