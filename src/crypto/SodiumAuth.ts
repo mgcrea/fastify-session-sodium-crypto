@@ -1,7 +1,7 @@
 import { createError, CRYPTO_SPLIT_CHAR, SecretKey, SessionCrypto } from '@mgcrea/fastify-session';
 import { BinaryToTextEncoding } from 'crypto';
 import sodium from 'sodium-native';
-import { asBuffer, buildKeyFromSecretAndSalt, sanitizeSecretKeys } from 'src/utils';
+import { asBuffer, buildKeyFromSecretAndSalt, sanitizeSecretKeys } from '../utils';
 
 export class SodiumAuth implements SessionCrypto {
   public readonly protocol = '/sodium_auth';

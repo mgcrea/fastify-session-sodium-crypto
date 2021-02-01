@@ -5,10 +5,7 @@
     "declaration": true,
     "outDir": "./lib",
     "rootDir": "./src",
-    "baseUrl": "./",
-    "paths": {
-      "src/*": ["./src/*"]
-    }
+    "baseUrl": "./"
   },
   "include": ["src/**/*"]
 }
