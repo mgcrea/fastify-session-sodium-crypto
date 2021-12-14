@@ -1,27 +1,39 @@
-# FastifySessionSodiumCrypto
+# fastify-session-sodium-crypto
 
-[![npm version](https://img.shields.io/npm/v/@mgcrea/fastify-session-sodium-crypto.svg)](https://github.com/mgcrea/fastify-session-sodium-crypto/releases)
-[![license](https://img.shields.io/npm/l/@mgcrea/fastify-session-sodium-crypto)](https://tldrlegal.com/license/mit-license)
-[![build status](https://img.shields.io/github/workflow/status/mgcrea/fastify-session-sodium-crypto/ci)](https://github.com/mgcrea/fastify-session-sodium-crypto/actions)
-[![dependencies status](https://img.shields.io/david/mgcrea/fastify-session-sodium-crypto)](https://david-dm.org/mgcrea/fastify-session-sodium-crypto)
-[![devDependencies status](https://img.shields.io/david/dev/mgcrea/fastify-session-sodium-crypto)](https://david-dm.org/mgcrea/fastify-session-sodium-crypto?type=dev)
+<p align="center">
+  <a href="https://www.npmjs.com/package/@mgcrea/fastify-session-sodium-crypto">
+    <img src="https://img.shields.io/npm/v/@mgcrea/fastify-session-sodium-crypto.svg?style=for-the-badge" alt="npm version" />
+  </a>
+  <!-- <a href="https://www.npmjs.com/package/@mgcrea/fastify-session-sodium-crypto">
+    <img src="https://img.shields.io/npm/dt/@mgcrea/fastify-session-sodium-crypto.svg?style=for-the-badge" alt="npm total downloads" />
+  </a> -->
+  <a href="https://www.npmjs.com/package/@mgcrea/fastify-session-sodium-crypto">
+    <img src="https://img.shields.io/npm/dm/@mgcrea/fastify-session-sodium-crypto.svg?style=for-the-badge" alt="npm monthly downloads" />
+  </a>
+  <a href="https://www.npmjs.com/package/@mgcrea/fastify-session-sodium-crypto">
+    <img src="https://img.shields.io/npm/l/@mgcrea/fastify-session-sodium-crypto.svg?style=for-the-badge" alt="npm license" />
+  </a>
+  <a href="https://github.com/mgcrea/fastify-session-sodium-crypto/actions/workflows/main.yml">
+    <img src="https://img.shields.io/github/workflow/status/mgcrea/fastify-session-sodium-crypto/main?style=for-the-badge" alt="github main workflow" />
+  </a>
+</p>
+
+## Features
 
 Fast sodium-based crypto for [@mgcrea/fastify-session](https://github.com/mgcrea/fastify-session)
 
 - Support both encrypted stateless sessions and signed stateful session with an external store.
-
 - Relies on [sodium-native](https://github.com/sodium-friends/sodium-native) to perform crypto.
-
 - Built with [TypeScript](https://www.typescriptlang.org/) for static type checking with exported types along the
   library.
 
-## Usage
+## Install
 
 ```bash
 npm install fastify-cookie @mgcrea/fastify-session-sodium-crypto --save
-# or
-yarn add fastify-cookie @mgcrea/fastify-session-sodium-crypto
 ```
+
+## Quickstart
 
 ### Stateful signed session with an external store
 
