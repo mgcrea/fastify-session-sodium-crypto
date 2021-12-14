@@ -30,10 +30,18 @@ Fast sodium-based crypto for [@mgcrea/fastify-session](https://github.com/mgcrea
 ## Install
 
 ```bash
-npm install fastify-cookie @mgcrea/fastify-session-sodium-crypto --save
+npm install @mgcrea/fastify-session @mgcrea/fastify-session-sodium-crypto --save
 ```
 
 ## Quickstart
+
+### Generate keys
+
+Copy a freshly generated `secretKey` from the bundled cli:
+
+```sh
+node_modules/.bin/fastify-session-sodium-crypto
+```
 
 ### Stateful signed session with an external store
 

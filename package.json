@@ -1,10 +1,10 @@
 {
   "name": "@mgcrea/fastify-session-sodium-crypto",
-  "version": "0.8.3",
+  "version": "0.9.0",
   "description": "Fast sodium-based crypto for fastify-session",
   "main": "lib/index.js",
   "bin": {
-    "fastify-session-genkey": "lib/bin/generate-key.js"
+    "fastify-session-sodium-crypto": "./lib/bin/generate-key.js"
   },
   "scripts": {
     "build": "rm -rf lib/*; tsc --build",
