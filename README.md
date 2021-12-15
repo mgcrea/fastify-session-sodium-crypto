@@ -40,7 +40,7 @@ npm install @mgcrea/fastify-session @mgcrea/fastify-session-sodium-crypto --save
 Copy a freshly generated `secretKey` from the bundled cli:
 
 ```sh
-node_modules/.bin/fastify-session-sodium-crypto
+node_modules/.bin/fastify-session-sodium-crypto generate-keypair
 ```
 
 ### Stateful signed session with an external store
