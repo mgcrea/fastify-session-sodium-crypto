@@ -21,6 +21,7 @@ const main = async () => {
     }
     default:
       console.log('Sorry, that is not something I know how to do.');
+      console.log(`Try generate-keypair, random-bytes`);
   }
 };
 
