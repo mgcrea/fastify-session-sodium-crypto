@@ -11,7 +11,8 @@
     "lint": "eslint src/ test/",
     "prettycheck": "prettier --check src/ test/",
     "typecheck": "tsc --noEmit",
-    "test": "npm run lint && npm run prettycheck && npm run typecheck"
+    "test": "npm run lint && npm run prettycheck && npm run typecheck",
+    "publishOnly": "npm run build"
   },
   "author": "Olivier Louvignes <olivier@mgcrea.io>",
   "license": "MIT",
