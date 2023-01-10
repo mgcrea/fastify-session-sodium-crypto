@@ -14,8 +14,12 @@
   <a href="https://www.npmjs.com/package/@mgcrea/fastify-session-sodium-crypto">
     <img src="https://img.shields.io/npm/l/@mgcrea/fastify-session-sodium-crypto.svg?style=for-the-badge" alt="npm license" />
   </a>
+  <br />
   <a href="https://github.com/mgcrea/fastify-session-sodium-crypto/actions/workflows/main.yml">
-    <img src="https://img.shields.io/github/actions/workflow/status/mgcrea/fastify-request-logger/main.yml?style=for-the-badge&branch=master" alt="build status" />
+    <img src="https://img.shields.io/github/actions/workflow/status/mgcrea/fastify-session-sodium-crypto/main.yml?style=for-the-badge&branch=master" alt="build status" />
+  </a>
+  <a href="https://depfu.com/github/mgcrea/fastify-session-sodium-crypto">
+    <img src="https://img.shields.io/depfu/dependencies/github/mgcrea/fastify-session-sodium-crypto?style=for-the-badge" alt="dependencies status" />
   </a>
 </p>
 <!-- markdownlint-enable MD037 -->
@@ -29,20 +33,20 @@ Fast sodium-based crypto for [@mgcrea/fastify-session](https://github.com/mgcrea
 - Built with [TypeScript](https://www.typescriptlang.org/) for static type checking with exported types along the
   library.
 
-## Install
+## Usage
 
 ```bash
 npm install @mgcrea/fastify-session @mgcrea/fastify-session-sodium-crypto --save
+# or
+pnpm add @mgcrea/fastify-session @mgcrea/fastify-session-sodium-crypto
 ```
-
-## Quickstart
 
 ### Generate keys
 
 Copy a freshly generated `secretKey` from the bundled cli:
 
 ```sh
-node_modules/.bin/fastify-session-sodium-crypto generate-keypair
+npx fastify-session-sodium-crypto generate-keypair
 ```
 
 ### Stateful signed session with an external store
@@ -52,21 +56,21 @@ secret-key with
 [libsodium's crytpo_auth](https://libsodium.gitbook.io/doc/secret-key_cryptography/secret-key_authentication)
 
 ```ts
-import createFastify, { FastifyInstance, FastifyServerOptions } from 'fastify';
-import fastifyCookie from 'fastify-cookie';
-import fastifySession from '@mgcrea/fastify-session';
-import { SODIUM_AUTH } from '@mgcrea/fastify-session-sodium-crypto';
+import createFastify, { FastifyInstance, FastifyServerOptions } from "fastify";
+import fastifyCookie from "fastify-cookie";
+import fastifySession from "@mgcrea/fastify-session";
+import { SODIUM_AUTH } from "@mgcrea/fastify-session-sodium-crypto";
 
-const SESSION_KEY = 'Egb/g4RUumlD2YhWYfeDlm5MddajSjGEBhm0OW+yo9s='';
+const SESSION_KEY = "Egb/g4RUumlD2YhWYfeDlm5MddajSjGEBhm0OW+yo9s="; // generated secretKey from the cli
 const SESSION_TTL = 864e3; // 1 day in seconds
-const REDIS_URI = process.env.REDIS_URI || 'redis://localhost:6379/1';
+const REDIS_URI = process.env.REDIS_URI || "redis://localhost:6379/1";
 
 export const buildFastify = (options?: FastifyServerOptions): FastifyInstance => {
   const fastify = createFastify(options);
 
   fastify.register(fastifyCookie);
   fastify.register(fastifySession, {
-    key: Buffer.from(SESSION_KEY, 'base64'),
+    key: Buffer.from(SESSION_KEY, "base64"),
     crypto: SODIUM_AUTH,
     store: new RedisStore({ client: new Redis(REDIS_URI), ttl: SESSION_TTL }),
     cookie: { maxAge: SESSION_TTL },
