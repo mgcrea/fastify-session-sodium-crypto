@@ -1,12 +1,13 @@
-# fastify-session-sodium-crypto
+# FastifySession SodiumCrypto
 
+<!-- markdownlint-disable MD033 -->
 <p align="center">
   <a href="https://www.npmjs.com/package/@mgcrea/fastify-session-sodium-crypto">
     <img src="https://img.shields.io/npm/v/@mgcrea/fastify-session-sodium-crypto.svg?style=for-the-badge" alt="npm version" />
   </a>
-  <!-- <a href="https://www.npmjs.com/package/@mgcrea/fastify-session-sodium-crypto">
+  <a href="https://www.npmjs.com/package/@mgcrea/fastify-session-sodium-crypto">
     <img src="https://img.shields.io/npm/dt/@mgcrea/fastify-session-sodium-crypto.svg?style=for-the-badge" alt="npm total downloads" />
-  </a> -->
+  </a>
   <a href="https://www.npmjs.com/package/@mgcrea/fastify-session-sodium-crypto">
     <img src="https://img.shields.io/npm/dm/@mgcrea/fastify-session-sodium-crypto.svg?style=for-the-badge" alt="npm monthly downloads" />
   </a>
@@ -14,9 +15,10 @@
     <img src="https://img.shields.io/npm/l/@mgcrea/fastify-session-sodium-crypto.svg?style=for-the-badge" alt="npm license" />
   </a>
   <a href="https://github.com/mgcrea/fastify-session-sodium-crypto/actions/workflows/main.yml">
-    <img src="https://img.shields.io/github/workflow/status/mgcrea/fastify-session-sodium-crypto/main?style=for-the-badge" alt="github main workflow" />
+    <img src="https://img.shields.io/github/actions/workflow/status/mgcrea/fastify-request-logger/main.yml?style=for-the-badge&branch=master" alt="build status" />
   </a>
 </p>
+<!-- markdownlint-enable MD037 -->
 
 ## Features
 
@@ -82,10 +84,10 @@ No external store required, the entire session data is encrypted using a secret-
 Here we used a `secret` instead of providing a `key`, key derivation will happen automatically on startup.
 
 ```ts
-import createFastify, { FastifyInstance, FastifyServerOptions } from 'fastify';
-import fastifyCookie from 'fastify-cookie';
-import fastifySession from '@mgcrea/fastify-session';
-import { SODIUM_SECRETBOX } from '@mgcrea/fastify-session-sodium-crypto';
+import createFastify, { FastifyInstance, FastifyServerOptions } from "fastify";
+import fastifyCookie from "fastify-cookie";
+import fastifySession from "@mgcrea/fastify-session";
+import { SODIUM_SECRETBOX } from "@mgcrea/fastify-session-sodium-crypto";
 
 const SESSION_TTL = 864e3; // 1 day in seconds
 
@@ -94,7 +96,7 @@ export const buildFastify = (options?: FastifyServerOptions): FastifyInstance =>
 
   fastify.register(fastifyCookie);
   fastify.register(fastifySession, {
-    secret: 'a secret with minimum length of 32 characters',
+    secret: "a secret with minimum length of 32 characters",
     crypto: SODIUM_SECRETBOX,
     cookie: { maxAge: SESSION_TTL },
   });
@@ -111,7 +113,7 @@ export const buildFastify = (options?: FastifyServerOptions): FastifyInstance =>
 NODE_PATH=. y ts-node --project test/tsconfig.json test/benchmark/cryptoSeal.ts
 ```
 
-```
+```txt
 SODIUM_SECRETBOX#sealJson x 333,747 ops/sec ±0.62% (91 runs sampled)
 SODIUM_AUTH#sealJson x 376,300 ops/sec ±0.50% (89 runs sampled)
 HMAC#sealJson x 264,292 ops/sec ±3.13% (85 runs sampled)
@@ -124,7 +126,7 @@ Fastest is SODIUM_AUTH#sealJson
 NODE_PATH=. y ts-node --project test/tsconfig.json test/benchmark/cryptoUnseal.ts
 ```
 
-```
+```txt
 SODIUM_SECRETBOX#unsealJson x 424,297 ops/sec ±0.69% (86 runs sampled)
 SODIUM_AUTH#unsealJson x 314,736 ops/sec ±0.96% (89 runs sampled)
 HMAC#unsealJson x 145,037 ops/sec ±5.67% (78 runs sampled)
@@ -146,7 +148,7 @@ Heavily inspired from
 
 ## License
 
-```
+```txt
 The MIT License
 
 Copyright (c) 2020 Olivier Louvignes <olivier@mgcrea.io>
