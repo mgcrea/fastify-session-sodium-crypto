@@ -1,6 +1,7 @@
+import { CRYPTO_SPLIT_CHAR } from '@mgcrea/fastify-session';
 import { SODIUM_SECRETBOX } from 'src/crypto';
-import { CRYPTO_SPLIT_CHAR } from 'src/utils';
 import { secretKey, sodiumSecretboxFixture } from 'test/fixtures';
+import { describe, expect, it } from 'vitest';
 
 describe('SodiumSecretbox', () => {
   it('should properly encrypt a message', async () => {

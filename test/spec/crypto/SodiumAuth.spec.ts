@@ -1,6 +1,7 @@
+import { CRYPTO_SPLIT_CHAR } from '@mgcrea/fastify-session';
 import { SODIUM_AUTH } from 'src/crypto';
-import { CRYPTO_SPLIT_CHAR } from 'src/utils';
 import { secretKey, sodiumAuthFixture } from 'test/fixtures';
+import { describe, expect, it } from 'vitest';
 
 describe('SodiumAuth', () => {
   it('should properly sign a message', async () => {

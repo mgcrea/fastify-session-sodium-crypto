@@ -1,5 +1,5 @@
-import { createError, CRYPTO_SPLIT_CHAR, SecretKey, SessionCrypto } from '@mgcrea/fastify-session';
-import { BinaryToTextEncoding } from 'crypto';
+import { createError, CRYPTO_SPLIT_CHAR, type SecretKey, type SessionCrypto } from '@mgcrea/fastify-session';
+import type { BinaryToTextEncoding } from 'crypto';
 import sodium from 'sodium-native';
 import { asBuffer, buildKeyFromSecretAndSalt, sanitizeSecretKeys } from '../utils';
 

@@ -2,41 +2,66 @@
   "name": "@mgcrea/fastify-session-sodium-crypto",
   "version": "0.8.7",
   "description": "Fast sodium-based crypto for fastify-session",
-  "main": "lib/index.js",
+  "author": "Olivier Louvignes <olivier@mgcrea.io>",
+  "repository": "github:mgcrea/fastify-session-sodium-crypto",
+  "license": "MIT",
+  "access": "public",
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "bin": {
     "fastify-session-sodium-crypto": "./lib/bin/cli.js"
   },
   "scripts": {
-    "build": "rm -rf lib/*; tsc --build",
+    "start": "npm run spec -- --watch",
+    "build": "tsup src/index.ts --format cjs,esm --sourcemap --dts --clean",
     "lint": "eslint src/ test/",
     "prettycheck": "prettier --check src/ test/",
+    "prettify": "prettier --write src/ test/",
     "typecheck": "tsc --noEmit",
-    "test": "npm run lint && npm run prettycheck && npm run typecheck",
-    "publishOnly": "npm run build"
+    "spec": "DEBUG=fastify-session* vitest --run",
+    "test": "npm run lint && npm run prettycheck && npm run typecheck && npm run spec",
+    "prepublishOnly": "npm run build"
   },
-  "author": "Olivier Louvignes <olivier@mgcrea.io>",
-  "license": "MIT",
+  "keywords": [
+    "fastify",
+    "session",
+    "sodium",
+    "crypto"
+  ],
+  "dependencies": {
+    "sodium-native": "^4.0.0"
+  },
   "peerDependencies": {
     "@mgcrea/fastify-session": "^0.16.0"
   },
   "devDependencies": {
     "@mgcrea/fastify-session": "^0.16.0",
-    "@tsconfig/node10": "^1.0.9",
-    "@types/jest": "^28.1.1",
+    "@tsconfig/node-lts-strictest-esm": "^18.12.1",
+    "@types/node": "^18.11.18",
     "@types/sodium-native": "^2.3.5",
-    "@typescript-eslint/eslint-plugin": "^5.28.0",
-    "@typescript-eslint/parser": "^5.28.0",
-    "eslint": "^8.17.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-jest": "^26.5.3",
-    "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^28.1.1",
-    "prettier": "^2.7.0",
-    "ts-jest": "^28.0.5",
-    "ts-node": "^10.8.1",
-    "typescript": "^4.7.3"
-  },
-  "dependencies": {
-    "sodium-native": "^3.3.0"
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.2",
+    "prettier-plugin-organize-imports": "^3.2.1",
+    "ts-node": "^10.9.1",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.4",
+    "vitest": "^0.27.0"
   }
 }
