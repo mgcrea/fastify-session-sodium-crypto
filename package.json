@@ -17,15 +17,16 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "fastify-session-sodium-crypto": "./dist/bin/cli.js"
+  },
   "files": [
     "dist"
   ],
-  "bin": {
-    "fastify-session-sodium-crypto": "./lib/bin/cli.js"
-  },
   "scripts": {
     "start": "npm run spec -- --watch",
-    "build": "tsup src/index.ts --format cjs,esm --sourcemap --dts --clean",
+    "build": "tsup --entry src/index.ts --format cjs,esm --sourcemap --dts --clean --entry src/bin/cli.ts",
+    "postbuild": "shebang-trim dist/bin/cli.js dist/bin/cli.cjs",
     "lint": "eslint src/ test/",
     "prettycheck": "prettier --check src/ test/",
     "prettify": "prettier --write src/ test/",
@@ -59,6 +60,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.2",
     "prettier-plugin-organize-imports": "^3.2.1",
+    "shebang-trim": "^1.1.0",
     "ts-node": "^10.9.1",
     "tsup": "^6.5.0",
     "typescript": "^4.9.4",

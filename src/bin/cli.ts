@@ -1,7 +1,6 @@
-#! /usr/bin/env node
+#!/usr/bin/env ts-node
 import sodium from "sodium-native";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const [action = "help", ...args] = process.argv.slice(2);
 
 const main = async () => {
