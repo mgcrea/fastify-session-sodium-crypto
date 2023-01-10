@@ -1,4 +1,4 @@
-import sodium from 'sodium-native';
+import sodium from "sodium-native";
 
 export const generateSalt = (): Buffer => {
   const buffer = Buffer.allocUnsafe(sodium.crypto_pwhash_SALTBYTES);

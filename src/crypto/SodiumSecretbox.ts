@@ -1,13 +1,13 @@
-import { createError, CRYPTO_SPLIT_CHAR, type SecretKey, type SessionCrypto } from '@mgcrea/fastify-session';
-import type { BinaryToTextEncoding } from 'crypto';
-import sodium from 'sodium-native';
-import { asBuffer, buildKeyFromSecretAndSalt, sanitizeSecretKeys } from '../utils';
+import { createError, CRYPTO_SPLIT_CHAR, type SecretKey, type SessionCrypto } from "@mgcrea/fastify-session";
+import type { BinaryToTextEncoding } from "crypto";
+import sodium from "sodium-native";
+import { asBuffer, buildKeyFromSecretAndSalt, sanitizeSecretKeys } from "../utils";
 
 export class SodiumSecretbox implements SessionCrypto {
-  public readonly protocol = '/sodium_secretbox';
+  public readonly protocol = "/sodium_secretbox";
   public readonly stateless = true;
   private readonly encoding: BinaryToTextEncoding;
-  constructor(encoding: BinaryToTextEncoding = 'base64') {
+  constructor(encoding: BinaryToTextEncoding = "base64") {
     this.encoding = encoding;
   }
   private generateNonce(): Buffer {
@@ -19,9 +19,9 @@ export class SodiumSecretbox implements SessionCrypto {
     if (key) {
       return sanitizeSecretKeys(key);
     } else if (secret) {
-      return [buildKeyFromSecretAndSalt(asBuffer(secret), salt ? asBuffer(salt, 'base64') : undefined)];
+      return [buildKeyFromSecretAndSalt(asBuffer(secret), salt ? asBuffer(salt, "base64") : undefined)];
     }
-    throw createError('SecretKeyDerivation', 'Failed to derive keys from options');
+    throw createError("SecretKeyDerivation", "Failed to derive keys from options");
   }
   public sealMessage(message: Buffer, secretKey: Buffer): string {
     const nonce = this.generateNonce();
@@ -34,16 +34,16 @@ export class SodiumSecretbox implements SessionCrypto {
   public unsealMessage(message: string, secretKeys: Buffer[]): { buffer: Buffer; rotated: boolean } {
     const splitCharIndex = message.lastIndexOf(CRYPTO_SPLIT_CHAR);
     if (splitCharIndex === -1) {
-      throw createError('MalformedMessageError', 'The message is malformed');
+      throw createError("MalformedMessageError", "The message is malformed");
     }
 
     const nonce = Buffer.from(message.slice(splitCharIndex + 1), this.encoding);
     if (nonce.length !== sodium.crypto_secretbox_NONCEBYTES) {
-      throw createError('NonceLengthError', 'The nonce does not have the required length');
+      throw createError("NonceLengthError", "The nonce does not have the required length");
     }
     const ciphertext = Buffer.from(message.slice(0, splitCharIndex), this.encoding);
     if (ciphertext.length < sodium.crypto_secretbox_MACBYTES) {
-      throw createError('CipherLengthError', 'The cipher is not long enough');
+      throw createError("CipherLengthError", "The cipher is not long enough");
     }
 
     const decrypted = Buffer.allocUnsafe(ciphertext.length - sodium.crypto_secretbox_MACBYTES);
@@ -56,7 +56,7 @@ export class SodiumSecretbox implements SessionCrypto {
     });
 
     if (!success) {
-      throw createError('VerifyError', 'Unable to verify');
+      throw createError("VerifyError", "Unable to verify");
     }
 
     return { buffer: decrypted, rotated };

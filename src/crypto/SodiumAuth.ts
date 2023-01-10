@@ -1,22 +1,22 @@
-import { createError, CRYPTO_SPLIT_CHAR, type SecretKey, type SessionCrypto } from '@mgcrea/fastify-session';
-import type { BinaryToTextEncoding } from 'crypto';
-import sodium from 'sodium-native';
-import { asBuffer, buildKeyFromSecretAndSalt, sanitizeSecretKeys } from '../utils';
+import { createError, CRYPTO_SPLIT_CHAR, type SecretKey, type SessionCrypto } from "@mgcrea/fastify-session";
+import type { BinaryToTextEncoding } from "crypto";
+import sodium from "sodium-native";
+import { asBuffer, buildKeyFromSecretAndSalt, sanitizeSecretKeys } from "../utils";
 
 export class SodiumAuth implements SessionCrypto {
-  public readonly protocol = '/sodium_auth';
+  public readonly protocol = "/sodium_auth";
   public readonly stateless = false;
   private readonly encoding: BinaryToTextEncoding;
-  constructor(encoding: BinaryToTextEncoding = 'base64') {
+  constructor(encoding: BinaryToTextEncoding = "base64") {
     this.encoding = encoding;
   }
   public deriveSecretKeys(key?: SecretKey, secret?: string, salt?: string): Buffer[] {
     if (key) {
       return sanitizeSecretKeys(key);
     } else if (secret) {
-      return [buildKeyFromSecretAndSalt(asBuffer(secret), salt ? asBuffer(salt, 'base64') : undefined)];
+      return [buildKeyFromSecretAndSalt(asBuffer(secret), salt ? asBuffer(salt, "base64") : undefined)];
     }
-    throw createError('SecretKeyDerivation', 'Failed to derive keys from options');
+    throw createError("SecretKeyDerivation", "Failed to derive keys from options");
   }
   public sealMessage(message: Buffer, secretKey: Buffer): string {
     const signature = Buffer.allocUnsafe(sodium.crypto_auth_BYTES);
@@ -26,11 +26,11 @@ export class SodiumAuth implements SessionCrypto {
   public unsealMessage(message: string, secretKeys: Buffer[]): { buffer: Buffer; rotated: boolean } {
     const splitCharIndex = message.lastIndexOf(CRYPTO_SPLIT_CHAR);
     if (splitCharIndex === -1) {
-      throw createError('MalformedMessageError', 'The message is malformed');
+      throw createError("MalformedMessageError", "The message is malformed");
     }
     const signature = Buffer.from(message.slice(splitCharIndex + 1), this.encoding);
     if (signature.length !== sodium.crypto_auth_BYTES) {
-      throw createError('SignatureLengthError', 'The signature does not have the required length');
+      throw createError("SignatureLengthError", "The signature does not have the required length");
     }
     const cleartext = Buffer.from(message.slice(0, splitCharIndex), this.encoding);
 
@@ -42,7 +42,7 @@ export class SodiumAuth implements SessionCrypto {
     });
 
     if (!success) {
-      throw createError('VerifyError', 'Unable to verify');
+      throw createError("VerifyError", "Unable to verify");
     }
 
     return { buffer: cleartext, rotated };
