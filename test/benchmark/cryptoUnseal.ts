@@ -1,6 +1,7 @@
+import { HMAC } from "@mgcrea/fastify-session";
 import benchmark from "benchmark";
 import { SODIUM_AUTH, SODIUM_SECRETBOX } from "src";
-import { secretKey, sodiumAuthFixture, sodiumSecretboxFixture } from "test/fixtures";
+import { hmacFixture, secretKey, sodiumAuthFixture, sodiumSecretboxFixture } from "test/fixtures";
 
 const { Suite } = benchmark;
 
@@ -11,9 +12,9 @@ new Suite()
   .add("SODIUM_AUTH#unsealJson", function () {
     SODIUM_AUTH.unsealMessage(sodiumAuthFixture, [secretKey]);
   })
-  // .add("HMAC#unsealJson", function () {
-  //   HMAC.unsealMessage(hmacFixture, [secretKey]);
-  // })
+  .add("HMAC#unsealJson", function () {
+    HMAC.unsealMessage(hmacFixture, [secretKey]);
+  })
   // add listeners
   .on("cycle", function (event: Event) {
     console.log(String(event.target));
