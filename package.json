@@ -33,7 +33,8 @@
     "typecheck": "tsc --noEmit",
     "spec": "DEBUG=fastify-session* vitest --run",
     "test": "npm run lint && npm run prettycheck && npm run typecheck && npm run spec",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "benchmark": "node --experimental-specifier-resolution=node --loader=ts-paths-esm-loader/transpile-only --no-warnings test/benchmark/cryptoSeal.ts; node --experimental-specifier-resolution=node --loader=ts-paths-esm-loader/transpile-only --no-warnings test/benchmark/cryptoUnseal.ts"
   },
   "keywords": [
     "fastify",
@@ -50,10 +51,12 @@
   "devDependencies": {
     "@mgcrea/fastify-session": "^0.16.0",
     "@tsconfig/node-lts-strictest-esm": "^18.12.1",
+    "@types/benchmark": "^2.1.2",
     "@types/node": "^18.11.18",
     "@types/sodium-native": "^2.3.5",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
+    "benchmark": "^2.1.4",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-jest": "^27.2.1",
@@ -61,7 +64,9 @@
     "prettier": "^2.8.2",
     "prettier-plugin-organize-imports": "^3.2.1",
     "shebang-trim": "^1.1.0",
+    "tsconfig-paths": "^3.12.0",
     "ts-node": "^10.9.1",
+    "ts-paths-esm-loader": "^1.3.2",
     "tsup": "^6.5.0",
     "typescript": "^4.9.4",
     "vitest": "^0.27.0"
