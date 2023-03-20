@@ -30,8 +30,7 @@ Fast sodium-based crypto for [@mgcrea/fastify-session](https://github.com/mgcrea
 
 - Support both encrypted stateless sessions and signed stateful session with an external store.
 - Relies on [sodium-native](https://github.com/sodium-friends/sodium-native) to perform crypto.
-- Built with [TypeScript](https://www.typescriptlang.org/) for static type checking with exported types along the
-  library.
+- Built with [TypeScript](https://www.typescriptlang.org/) for static type checking with exported types along the library.
 
 ## Usage
 
@@ -155,7 +154,7 @@ Heavily inspired from
 ```txt
 The MIT License
 
-Copyright (c) 2020 Olivier Louvignes <olivier@mgcrea.io>
+Copyright (c) 2023 Olivier Louvignes <olivier@mgcrea.io>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
