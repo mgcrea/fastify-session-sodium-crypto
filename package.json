@@ -17,7 +17,7 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "fastify-session-sodium-crypto": "./dist/bin/cli.js"
+    "fastify-session-sodium-crypto": "./dist/bin/cli.cjs"
   },
   "files": [
     "dist"
