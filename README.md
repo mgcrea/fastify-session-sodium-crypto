@@ -29,7 +29,7 @@
 Fast sodium-based crypto for [@mgcrea/fastify-session](https://github.com/mgcrea/fastify-session)
 
 - Support both encrypted stateless sessions and signed stateful session with an external store.
-- Relies on [sodium-native](https://github.com/sodium-friends/sodium-native) (eg. [libsodium](https://doc.libsodium.org)) to perform crypto.
+- Relies on [sodium-native](https://github.com/sodium-friends/sodium-native) (aka. [libsodium](https://doc.libsodium.org)) to perform crypto.
 - Built with [TypeScript](https://www.typescriptlang.org/) for static type checking with exported types along the library.
 
 ### Benefits: Libsodium vs. OpenSSL
