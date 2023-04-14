@@ -32,6 +32,16 @@ Fast sodium-based crypto for [@mgcrea/fastify-session](https://github.com/mgcrea
 - Relies on [sodium-native](https://github.com/sodium-friends/sodium-native) to perform crypto.
 - Built with [TypeScript](https://www.typescriptlang.org/) for static type checking with exported types along the library.
 
+### Benefits: Libsodium vs. OpenSSL
+
+Node.js uses OpenSSL as its default SSL/TLS implementation. Libsodium and OpenSSL are both popular libraries used for cryptographic operations, but they have different design philosophies and features. The pros of using Libsodium are:
+
+- **Easy-to-use API**: Libsodium is designed to be simple and easy to use. Its API is more straightforward than OpenSSL's, which can help prevent implementation errors and improve code maintainability.
+- **Modern cryptography**: Libsodium focuses on modern, secure, and high-performance cryptographic algorithms, such as [ChaCha20](https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant), [Poly1305](https://en.wikipedia.org/wiki/Poly1305), and [Ed25519](https://en.wikipedia.org/wiki/EdDSA). These algorithms are considered more secure and efficient than some older algorithms supported by OpenSSL.
+- **Side-channel attack resistance**: Libsodium emphasizes protection against side-channel attacks like timing attacks, which can reveal sensitive information through indirect means.
+- **Minimal configuration**: Libsodium requires minimal configuration to use securely, which can help reduce the likelihood of security issues caused by misconfigurations.
+- **Constant-time implementations**: Libsodium is designed with constant-time implementations to prevent timing attacks, a concern with some OpenSSL functions.
+
 ## Usage
 
 ```bash
