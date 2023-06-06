@@ -1,6 +1,6 @@
 {
   "name": "@mgcrea/fastify-session-sodium-crypto",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Fast sodium-based crypto for fastify-session",
   "author": "Olivier Louvignes <olivier@mgcrea.io>",
   "repository": "github:mgcrea/fastify-session-sodium-crypto",
