@@ -30,7 +30,7 @@ export const buildKeyFromSecretAndSalt = (secret: Buffer, salt: Buffer = generat
     salt,
     sodium.crypto_pwhash_OPSLIMIT_MODERATE,
     sodium.crypto_pwhash_MEMLIMIT_MODERATE,
-    sodium.crypto_pwhash_ALG_DEFAULT
+    sodium.crypto_pwhash_ALG_DEFAULT,
   );
 
   return key;
