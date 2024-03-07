@@ -40,29 +40,27 @@
     "sodium",
     "crypto"
   ],
-  "dependencies": {
-    "sodium-native": "^4.0.4"
-  },
   "peerDependencies": {
-    "@mgcrea/fastify-session": ">=1.0.0"
+    "@mgcrea/fastify-session": ">=1",
+    "sodium-native": ">=4"
   },
   "devDependencies": {
-    "@mgcrea/eslint-config-node": "^0.8.1",
-    "@mgcrea/fastify-session": "^2.1.1",
-    "@tsconfig/node-lts": "^18.12.5",
-    "@tsconfig/strictest": "^2.0.2",
-    "@types/benchmark": "^2.1.2",
-    "@types/node": "^18.17.14",
-    "@types/sodium-native": "^2.3.5",
+    "@mgcrea/eslint-config-node": "^0.10.0",
+    "@mgcrea/fastify-session": "^2.3.0",
+    "@tsconfig/node-lts": "^20.1.1",
+    "@tsconfig/strictest": "^2.0.3",
+    "@types/benchmark": "^2.1.5",
+    "@types/node": "^20.11.25",
+    "@types/sodium-native": "^2.3.9",
     "benchmark": "^2.1.4",
-    "eslint": "^8.48.0",
-    "prettier": "^3.0.3",
-    "prettier-plugin-organize-imports": "^3.2.3",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-organize-imports": "^3.2.4",
     "shebang-trim": "^1.2.0",
-    "tsup": "^7.2.0",
-    "tsx": "^3.12.8",
-    "typescript": "^5.2.2",
-    "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.34.3"
+    "tsup": "^8.0.2",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.2",
+    "vite-tsconfig-paths": "^4.3.1",
+    "vitest": "^1.3.1"
   }
 }
