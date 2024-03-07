@@ -57,6 +57,7 @@
     "prettier": "^3.2.5",
     "prettier-plugin-organize-imports": "^3.2.4",
     "shebang-trim": "^1.2.0",
+    "sodium-native": "^4.0.10",
     "tsup": "^8.0.2",
     "tsx": "^4.7.1",
     "typescript": "^5.4.2",
