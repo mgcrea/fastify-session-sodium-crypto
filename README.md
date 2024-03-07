@@ -45,9 +45,9 @@ Node.js uses OpenSSL as its default SSL/TLS implementation. Libsodium and OpenSS
 ## Usage
 
 ```bash
-npm install @mgcrea/fastify-session @mgcrea/fastify-session-sodium-crypto --save
+npm install @mgcrea/fastify-session sodium-native @mgcrea/fastify-session-sodium-crypto --save
 # or
-pnpm add @mgcrea/fastify-session @mgcrea/fastify-session-sodium-crypto
+pnpm add @mgcrea/fastify-session sodium-native @mgcrea/fastify-session-sodium-crypto
 ```
 
 ### Generate keys
